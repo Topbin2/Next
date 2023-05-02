@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = {
   params: {
     slug: string;
@@ -8,4 +6,11 @@ type Props = {
 
 export default function PantsPage({ params }: Props) {
   return <h1>Pants page {params.slug}</h1>;
+}
+
+export function generateStaticParams() {
+  const products = ["pants", "skirt"];
+  return products.map((product) => ({
+    slug: product,
+  }));
 }
