@@ -1,4 +1,6 @@
+import { AppProps } from "next/app";
 import { notFound } from "next/navigation";
+import { useEffect } from "react";
 
 type Props = {
   params: {
@@ -11,7 +13,7 @@ export default function PantsPage({ params }: Props) {
     notFound();
   }
 
-  return <h1>Pants page {params.slug}</h1>;
+  return <h1>{params.slug} 제품 설명 페이지</h1>;
 }
 
 export function generateStaticParams() {
