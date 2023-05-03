@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 type Props = {
   params: {
     slug: string;
@@ -5,6 +7,10 @@ type Props = {
 };
 
 export default function PantsPage({ params }: Props) {
+  if (params.slug === "nothing") {
+    notFound();
+  }
+
   return <h1>Pants page {params.slug}</h1>;
 }
 
