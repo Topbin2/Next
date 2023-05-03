@@ -1,9 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./layout.module.css";
 
-export const metadata = {
-  title: "제품페이지",
-  description: "제품페이지",
+export const metadata: Metadata = {
+  title: "제품페이지 | 전체 제품 확인",
+  description: "멋진 제품을 확인해 보세요",
 };
 
 export default function ProductLayout({
