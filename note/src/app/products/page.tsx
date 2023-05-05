@@ -1,12 +1,21 @@
 import { getProducts } from "@/service/products";
 import Link from "next/link";
 import React from "react";
+import styles from "./page.module.css";
 
-const ProductsPage = async () => {
-  // 서버 파일(데이터베이스)에 있는 제품의 리스트를 읽어와서, 그걸 보여줌
+// export const revalidate = 3;
+
+export default async function ProductsPage() {
   const products = await getProducts();
+  const res = await fetch("https://meowfacts.herokuapp.com", {
+    // next: { revalidate: 0 },
+    // cache: "no-store",
+  });
+  const data = await res.json();
+  const factText = data.data[0];
+
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <>
       <h1>제품 소개 페이지!</h1>
       <ul>
         {products.map(({ id, name }) => (
@@ -15,8 +24,7 @@ const ProductsPage = async () => {
           </li>
         ))}
       </ul>
-    </div>
+      <article className={styles.article}>{factText}</article>
+    </>
   );
-};
-
-export default ProductsPage;
+}
